@@ -32,7 +32,9 @@
           </div>
           <?php
             session_start();
+            if(!isset($_SESSION['community'])){
             $_SESSION['community'] = $_GET['community'];
+            }
           ?>
           <?php if (isset($_SESSION['error'])){ ?>
           <div class="text-center pad-top-20">
