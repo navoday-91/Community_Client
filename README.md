@@ -1,2 +1,1 @@
-# Community_Client
-Client Repo
+# Social_Community
