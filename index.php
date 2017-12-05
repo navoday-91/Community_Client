@@ -26,7 +26,7 @@
         <fieldset>
           <legend>Log in</legend>
           <div class="form-group">
-            <label for="user_username" class="control-label">Username: $_SESSION['community']</label>
+            <label for="user_username" class="control-label">Username: <?php echo($_SESSION['community']) ?></label>
             <input type="text" id="user_username" class="form-control" name="user_username" autofocus/>
           </div>
           <div class="form-group">
