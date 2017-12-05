@@ -66,11 +66,12 @@ $query = mysqli_query($connection, "select * from community_details where comm_n
 // To protect MySQL injection for Security purpose
 if ($rows == 1) {
     while ($user = $query->fetch_assoc()) {
-        $dbpath = $user["comm_db"].":3306";
+        $dbpath = $user["comm_db"];
+        $_SESSION['error'] = $dbpath;
         
     }
 }
-$connection = mysqli_connect("$dbpath", "admin", "redhat123", "cmpe281");
+$connection = mysqli_connect("testcommrdsdb.cc5mcrpreogy.us-west-1.rds.amazonaws.com", "admin", "redhat123", "cmpe281");
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
     echo('connection to db failed');
