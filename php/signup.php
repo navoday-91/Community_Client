@@ -3,7 +3,7 @@ session_start(); // Starting Session
 $error=''; // Variable To Store Error Message
 $communtiy = $_SESSION('community');
 if (isset($_POST['Register'])) {
-    if (empty($_POST['user_username']) || empty($_POST['user_password']) || empty($_POST['first_name']) || empty($_POST['last_name']) || empty($_POST['email']) || empty($_POST['address']) || empty($_POST['phone']) || empty($_POST['community'])) {
+    if (empty($_POST['user_username']) || empty($_POST['user_password']) || empty($_POST['first_name']) || empty($_POST['last_name']) || empty($_POST['email']) || empty($_POST['address']) || empty($_POST['phone'])) {
         if (empty($_POST['user_username'])) {
             $error = "Username can't be blank";
             echo($error);
@@ -110,7 +110,7 @@ echo("Connected successfully \n");
         }
         $query = mysqli_query($connection, "insert into userdata values('$username','$firstname','$lastname','$email','$address','$phone', '$community', '$picurl');");
         echo(mysqli_error($connection));
-        $query = mysqli_query($connection, "insert into login values('$username','$password','$community','citizen');");
+        $query = mysqli_query($connection, "insert into login values('$username','$password','citizen');");
         echo(mysqli_error($connection));
         $_SESSION['error'] = "Registration Successful";
         header("location: ../index.php");
