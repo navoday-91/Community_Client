@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php
+            session_start();
+            if(!isset($_SESSION['community'])){
+            $_SESSION['community'] = $_GET['community'];
+            }
+          ?>
 <html >
 <head>
   <meta charset="UTF-8">
@@ -20,7 +26,7 @@
         <fieldset>
           <legend>Log in</legend>
           <div class="form-group">
-            <label for="user_username" class="control-label">Username:</label>
+            <label for="user_username" class="control-label">Username: $_SESSION['community']</label>
             <input type="text" id="user_username" class="form-control" name="user_username" autofocus/>
           </div>
           <div class="form-group">
@@ -30,12 +36,7 @@
           <div class="text-center pad-top-20">
             <p>Have you forgotten your<br><a href="#" class="link"><strong>Username</strong></a> or <a href="#" class="link"><strong>Password</strong></a>?</p>
           </div>
-          <?php
-            session_start();
-            if(!isset($_SESSION['community'])){
-            $_SESSION['community'] = $_GET['community'];
-            }
-          ?>
+          
           <?php if (isset($_SESSION['error'])){ ?>
           <div class="text-center pad-top-20">
             <p><font color="red"><strong><?php echo($_SESSION['error']); ?></strong></font></p>
