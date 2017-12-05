@@ -1,6 +1,7 @@
 <?php
 session_start(); // Starting Session
 $error=''; // Variable To Store Error Message
+$communtiy = $_SESSION('community');
 if (isset($_POST['Register'])) {
     if (empty($_POST['user_username']) || empty($_POST['user_password']) || empty($_POST['first_name']) || empty($_POST['last_name']) || empty($_POST['email']) || empty($_POST['address']) || empty($_POST['phone']) || empty($_POST['community'])) {
         if (empty($_POST['user_username'])) {
@@ -45,12 +46,7 @@ if (isset($_POST['Register'])) {
             $_SESSION['error'] = $error;
             header("location: ../register.php"); // Redirecting back
             }
-        if (empty($_POST['community'])) {
-            $error = "Community can't be blank";
-            echo($error);
-            $_SESSION['error'] = $error;
-            header("location: ../register.php"); // Redirecting back
-            }
+        
 }
 else
 {
@@ -73,6 +69,7 @@ if ($rows == 1) {
         $dbpath = $user["comm_db"];
         
     }
+}
 $connection = mysqli_connect($dbpath, "admin", "redhat123", "cmpe281");
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
@@ -89,7 +86,6 @@ echo("Connected successfully \n");
     $address = ($_POST['address']);
     $phone = ($_POST['phone']);
     $picurl = ($_POST['pic_url']);
-    $community = ($_POST['community']);
     if ($picurl == ""){
         $picurl = "http://awear.linkresearchlab.org/gfx/users/default-05.png";
     }

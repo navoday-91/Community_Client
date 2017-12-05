@@ -29,6 +29,7 @@ if ($rows == 1) {
         $dbpath = $user["comm_db"];
         
     }
+}
 $connection = mysqli_connect($dbpath, "admin", "redhat123", "cmpe281");
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);

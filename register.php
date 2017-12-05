@@ -83,32 +83,7 @@
             </label>
             <input type="text" autocomplete="off" name="pic_url"/>
           </div>
-          <?php
-                $connection = mysqli_connect("localhost", "admin", "redhat");
-                if ($connection->connect_error) {
-                    die("Connection failed: " . $connection->connect_error);
-                    echo('connection to db failed');
-                    echo($connection);
-                }
-                $db = mysqli_select_db($connection, "cmpe281");
-                // SQL query to fetch communities.
-                $query = mysqli_query($connection, "select * from communities;");
-                $rows = mysqli_num_rows($query);
-                
-          ?>
           
-          <div class="field-wrap">
-              <select name = "community"> Community
-                  <option value = ""> Select Community</option>
-                <?php if ($rows > 0) {
-                    while ($user = $query->fetch_assoc()) { ?>
-                        <option value = "<?php echo($user['community_name']); ?>"> <?php echo($user['community_name']); ?></option>
-                    <?php } } 
-                    else{?>
-                        <option value = ""> No Communities Available</option>
-                    <?php } ?>
-            </select>
-          </div>
           <button type="submit" class="button button-block" name="Register"/>Signup</button>
           
           </form>

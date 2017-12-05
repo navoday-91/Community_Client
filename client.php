@@ -360,12 +360,35 @@
     <body>
         <div class="chat-sidebar">
             <?php
-                $connection = mysqli_connect("localhost", "admin", "redhat");
-                // Selecting Database
+                $dbpath = "54.183.103.17";
+// Establishing Connection with Server by passing server_name, user_id and password as a parameter
+$connection = mysqli_connect($dbpath, "root", "redhat", "cmpe281");
+if ($connection->connect_error) {
+    die("Connection failed: " . $connection->connect_error);
+    echo('connection to db failed');
+    echo($connection);
+}
+echo("Connected successfully \n");
+$db = mysqli_select_db($connection, "cmpe281");
+// SQL query to fetch information of registerd users and finds user match.
+$query = mysqli_query($connection, "select * from community_details where comm_name = $community;");
+// To protect MySQL injection for Security purpose
+if ($rows == 1) {
+    while ($user = $query->fetch_assoc()) {
+        $dbpath = $user["comm_db"];
+        
+    }
+}
+$connection = mysqli_connect($dbpath, "admin", "redhat123", "cmpe281");
+if ($connection->connect_error) {
+    die("Connection failed: " . $connection->connect_error);
+    echo('connection to db failed');
+    echo($connection);
+}
                     $db = mysqli_select_db($connection, "cmpe281");
                     $community = $_SESSION['community'];
                     // SQL query to fetch information of registerd users and finds user match.
-                    $query = mysqli_query($connection, "select `groupname` from groups where community = '$community';");
+                    $query = mysqli_query($connection, "select `groupname` from groups;");
                     $rows = mysqli_num_rows($query);
                     if ($rows > 0) {
                         while ($user = $query->fetch_assoc()) {
@@ -384,12 +407,35 @@
                 ?>
             
             <?php
-                $connection = mysqli_connect("localhost", "admin", "redhat");
-                // Selecting Database
+                $dbpath = "54.183.103.17";
+// Establishing Connection with Server by passing server_name, user_id and password as a parameter
+$connection = mysqli_connect($dbpath, "root", "redhat", "cmpe281");
+if ($connection->connect_error) {
+    die("Connection failed: " . $connection->connect_error);
+    echo('connection to db failed');
+    echo($connection);
+}
+echo("Connected successfully \n");
+$db = mysqli_select_db($connection, "cmpe281");
+// SQL query to fetch information of registerd users and finds user match.
+$query = mysqli_query($connection, "select * from community_details where comm_name = $community;");
+// To protect MySQL injection for Security purpose
+if ($rows == 1) {
+    while ($user = $query->fetch_assoc()) {
+        $dbpath = $user["comm_db"];
+        
+    }
+}
+$connection = mysqli_connect($dbpath, "admin", "redhat123", "cmpe281");
+if ($connection->connect_error) {
+    die("Connection failed: " . $connection->connect_error);
+    echo('connection to db failed');
+    echo($connection);
+}
                     $db = mysqli_select_db($connection, "cmpe281");
                     $community = $_SESSION['community'];
                     // SQL query to fetch information of registerd users and finds user match.
-                    $query = mysqli_query($connection, "select login.`username`, `first name`, `last name`, `picurl` from userdata, login where login.username = userdata.username and login.community_name = '$community';");
+                    $query = mysqli_query($connection, "select login.`username`, `first name`, `last name`, `picurl` from userdata, login where login.username = userdata.username ;");
                     $rows = mysqli_num_rows($query);
                     if ($rows > 0) {
                         while ($user = $query->fetch_assoc()) {
