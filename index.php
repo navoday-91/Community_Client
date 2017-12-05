@@ -33,8 +33,6 @@
           <?php
             session_start();
             $_SESSION['community'] = $_GET['community'];
-            $community = $_GET['community'];
-            $_SESSION['error'] = $community.$_SESSION['community'];
           ?>
           <?php if (isset($_SESSION['error'])){ ?>
           <div class="text-center pad-top-20">
