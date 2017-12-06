@@ -113,7 +113,7 @@ echo("Connected successfully \n");
         echo(mysqli_error($connection));
         $query = mysqli_query($connection, "insert into login values('$username','$password','citizen');");
         echo(mysqli_error($connection));
-        $_SESSION['error'] = "Registration Successful!".$_SESSION['community'].$dbpath;
+        $_SESSION['error'] = "Registration Successful!";
         header("location: ../index.php");
     } 
     else {
