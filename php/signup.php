@@ -68,10 +68,11 @@ $rows = mysqli_num_rows($query);
 if ($rows == 1) {
     while ($user = $query->fetch_assoc()) {
         $dbpath = $user["comm_db"];
+        error_log("dbpath = ".$dbpath);
         
     }
 }
-$connection = mysqli_connect("$dbpath", "admin", "redhat123", "cmpe281");
+$connection = mysqli_connect($dbpath, "admin", "redhat123", "cmpe281");
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
     echo('connection to db failed');
