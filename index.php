@@ -8,7 +8,7 @@
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Social Communicator Login</title>
+  <title>Social Communicator Login : <?php echo($_SESSION['community']) ?></title>
   
   
   <link rel='stylesheet prefetch' href='https://www.google.com/fonts#UsePlace:use/Collection:Roboto:400,300,100,500'>

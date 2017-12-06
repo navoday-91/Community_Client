@@ -62,7 +62,7 @@ if ($connection->connect_error) {
 echo("Connected successfully \n");
 $db = mysqli_select_db($connection, "cmpe281");
 // SQL query to fetch information of registerd users and finds user match.
-$query = mysqli_query($connection, "select * from community_details where comm_name = $community;");
+$query = mysqli_query($connection, "select * from community_details where comm_name = '$community';");
 // To protect MySQL injection for Security purpose
 $rows = mysqli_num_rows($query);
 if ($rows == 1) {
@@ -114,7 +114,7 @@ echo("Connected successfully \n");
         echo(mysqli_error($connection));
         $query = mysqli_query($connection, "insert into login values('$username','$password','citizen');");
         echo(mysqli_error($connection));
-        $_SESSION['error'] = "Registration Successful!";
+        $_SESSION['error'] = "Registration Successful!".$_SESSION['community'].$dbpath;
         header("location: ../index.php");
     } 
     else {
