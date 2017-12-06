@@ -70,7 +70,7 @@ if ($rows == 1) {
         
     }
 }
-$connection = mysqli_connect("testcommrdsdb.cc5mcrpreogy.us-west-1.rds.amazonaws.com", "admin", "redhat123", "cmpe281");
+$connection = mysqli_connect("$dbpath", "admin", "redhat123", "cmpe281");
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
     echo('connection to db failed');
@@ -112,7 +112,7 @@ echo("Connected successfully \n");
         echo(mysqli_error($connection));
         $query = mysqli_query($connection, "insert into login values('$username','$password','citizen');");
         echo(mysqli_error($connection));
-        $_SESSION['error'] = $dbpath;
+        $_SESSION['error'] = "Registration Successful!";
         header("location: ../index.php");
     } 
     else {
