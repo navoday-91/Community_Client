@@ -318,7 +318,8 @@
                                                         echo("Connected successfully \n");
                                                         $db = mysqli_select_db($connection, "cmpe281");
                                                         // SQL query to fetch information of registerd users and finds user match.
-                                                        $query = mysqli_query($connection, "select * from community_details where comm_name = $community;");
+                                                        $query = mysqli_query($connection, "select * from community_details where comm_name = '$community';");
+                                                        $rows = mysqli_num_rows($query);
                                                         // To protect MySQL injection for Security purpose
                                                         if ($rows == 1) {
                                                             while ($user = $query->fetch_assoc()) {

@@ -313,7 +313,26 @@
                                                         $_SESSION['error3'] = $error;
                                                 }
                                                 else{
-                                                $connection = mysqli_connect("localhost", "admin", "redhat");
+                                                $dbpath = "54.183.103.17";
+                                                $community = $_SESSION['community'];
+                                                        // Establishing Connection with Server by passing server_name, user_id and password as a parameter
+                                                        $connection = mysqli_connect($dbpath, "root", "redhat", "cmpe281");
+                                                        if ($connection->connect_error) {
+                                                            die("Connection failed: " . $connection->connect_error);
+                                                            echo('connection to db failed');
+                                                            echo($connection);
+                                                        }
+                                                        $db = mysqli_select_db($connection, "cmpe281");
+                                                        // SQL query to fetch information of registerd users and finds user match.
+                                                        $query = mysqli_query($connection, "select * from community_details where comm_name = '$community';");
+                                                        $rows = mysqli_num_rows($query);
+                                                        // To protect MySQL injection for Security purpose
+                                                        if ($rows == 1) {
+                                                            while ($user = $query->fetch_assoc()) {
+                                                                $dbpath = $user["comm_db"];
+                                                                
+                                                            }
+                                                        $connection = mysqli_connect($dbpath, "admin", "redhat123", "cmpe281");
                                                         if ($connection->connect_error) {
                                                             die("Connection failed: " . $connection->connect_error);
                                                             echo('connection to db failed');
