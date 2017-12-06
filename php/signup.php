@@ -67,7 +67,6 @@ $query = mysqli_query($connection, "select * from community_details where comm_n
 if ($rows == 1) {
     while ($user = $query->fetch_assoc()) {
         $dbpath = $user["comm_db"];
-        $_SESSION['error'] = $dbpath;
         
     }
 }
@@ -113,7 +112,7 @@ echo("Connected successfully \n");
         echo(mysqli_error($connection));
         $query = mysqli_query($connection, "insert into login values('$username','$password','citizen');");
         echo(mysqli_error($connection));
-        $_SESSION['error'] = $_SESSION['error']."Registration Successful";
+        $_SESSION['error'] = $dbpath;
         header("location: ../index.php");
     } 
     else {
