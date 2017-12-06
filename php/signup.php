@@ -68,7 +68,6 @@ $rows = mysqli_num_rows($query);
 if ($rows == 1) {
     while ($user = $query->fetch_assoc()) {
         $dbpath = $user["comm_db"];
-        error_log("dbpath = ".$dbpath);
         
     }
 }
